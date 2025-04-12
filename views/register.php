@@ -1,7 +1,19 @@
 <?php
-include('config/app.php');
-include('codes/auth.php');
+require_once '../controllers/UserController.php';
+
+$errors = [];
+$success = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register_btn'])) {
+    $controller = new UserController();
+    $errors = $controller->register($_POST);
+
+    if (empty($errors)) {
+        $success = "Sikeres regisztráció!";
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +22,7 @@ include('codes/auth.php');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="./public/style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -19,17 +31,29 @@ include('codes/auth.php');
 </head>
 
 <body class="bg-light">
-    <?php include('./includes/navbar.php'); ?>
+    <?php include('../includes/navbar.php'); ?>
     <div class="container">
         <h1 class="mt-5 d-flex flex-column align-items-center">Regisztráció</h1>
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger w-50 mx-auto">
+                <ul class="mb-0">
+                    <?php foreach ($errors as $error): ?>
+                        <li><?= htmlspecialchars($error) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($success)): ?>
+            <div class="alert alert-success w-50 mx-auto">
+                <?= htmlspecialchars($success) ?>
+            </div>
+        <?php endif; ?>
+
         <form class="mt-4 d-flex flex-column align-items-center" method="POST" action="">
             <div class="form-group w-50 mb-3">
                 <label for="username">Felhasználónév</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="felhasználónév" required>
-            </div>
-            <div class="form-group w-50 mb-3">
-                <label for="email">Email cím</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="joskapista@email.hu" required>
             </div>
             <div class="form-group w-50 mb-3">
                 <label for="password">Jelszó</label>

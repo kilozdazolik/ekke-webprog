@@ -1,4 +1,3 @@
-<?php include('config/app.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bootstrap demo</title>
-  <link rel="stylesheet" href="./public/style.css">
+  <link rel="stylesheet" href="../public/style.css">
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -15,7 +14,7 @@
 </head>
 
 <body class="bg-light">
-  <?php include('./includes/navbar.php'); ?>
+  <?php include('../includes/navbar.php'); ?>
   <div class="container main">
     <div class="card text-center mt-3 mb-3">
       <div class="card-header">
