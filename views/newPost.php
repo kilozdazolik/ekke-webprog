@@ -38,11 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form class="p-3" method="POST" action="">
                 <div class="mb-3">
                     <label for="title" class="form-label mt-3">Kérdés címe</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <input type="text" class="form-control" id="title" name="title">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Kérdés leírása</label>
-                    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mb-3">Küldés</button>
 

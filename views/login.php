@@ -40,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login-btn'])) {
         <form class="mt-4 d-flex flex-column align-items-center" method="POST" action="">
             <div class="form-group w-50 mb-3">
                 <label for="username">Felhasználónév</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="felhasználónév" required>
+                <input type="text" class="form-control" id="username" name="username" placeholder="felhasználónév">
             </div>
             <div class="form-group w-50 mb-3">
                 <label for="password">Jelszó</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="*******" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="*******">
             </div>
             <button type="submit" name="login-btn" class="btn btn-primary">Belépés</button>
         </form>

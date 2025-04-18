@@ -53,15 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register_btn'])) {
         <form class="mt-4 d-flex flex-column align-items-center" method="POST" action="">
             <div class="form-group w-50 mb-3">
                 <label for="username">Felhasználónév</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="felhasználónév" required>
+                <input type="text" class="form-control" id="username" name="username" placeholder="felhasználónév">
             </div>
             <div class="form-group w-50 mb-3">
                 <label for="password">Jelszó</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="*******" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="*******">
             </div>
             <div class="form-group w-50 mb-3">
                 <label for="passwordConfirm">Jelszó megerősítése</label>
-                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="*******" required>
+                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="*******">
             </div>
             <button type="submit" name="register_btn" class="btn btn-primary">Regisztráció</button>
         </form>
