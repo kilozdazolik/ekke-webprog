@@ -1,52 +1,44 @@
+<?php
+require_once '../controllers/PostController.php';
+require_once '../helpers/functions.php';
+
+$controller = new PostController();
+$posts = $controller->getAllPosts();
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bootstrap demo</title>
+  <title>Kérdésbázis</title>
   <link rel="stylesheet" href="../public/style.css">
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-    crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
 </head>
 
 <body class="bg-light">
   <?php include('../includes/navbar.php'); ?>
   <div class="container main">
-    <div class="card text-center mt-3 mb-3">
-      <div class="card-header">
-        zöldsas29
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Mikor fog a fradi bajnokságot nyerni?</h5>
-        <p class="card-text">Nos az a helyzet, hogy nekem kéne a fradi kupa mive.....</p>
-        <a href="#" class="btn btn-primary">Megtekintés</a>
-      </div>
-      <div class="card-footer text-body-secondary">
-        2 perce
-      </div>
+    <?php foreach ($posts as $post): ?>
+      <div class="card text-center mt-3 mb-3">
+        <div class="card-header">
+          <?= htmlspecialchars($post['username']) ?>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><?= htmlspecialchars($post['title']) ?></h5>
+          <p class="card-text"><?= htmlspecialchars($post['description']) ?></p>
+          <a href="./post.php?id=<?= urlencode($post['id']) ?>" class="btn btn-primary">Megtekintés</a>
 
-    </div>
-    <div class="card text-center">
-      <div class="card-header">
-        baleentfitness
+        </div>
+        <div class="card-footer text-body-secondary">
+          <?= timeAgo($post['created_at']) ?>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">hogyan tudnék több követőt szerezni?</h5>
-        <p class="card-text">haverjaim nem hiszik el, hogy én nagy fitnesses vagyo...</p>
-        <a href="#" class="btn btn-primary">Megtekintés</a>
-      </div>
-      <div class="card-footer text-body-secondary">
-        10 perce
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
-
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
 </body>
